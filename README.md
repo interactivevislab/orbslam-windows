@@ -1,5 +1,9 @@
 # ORB_SLAM2_Windows
-Easy build for ORB Slam 2 on Windows
+
+## About this fork
+This fork is created to use ORB Slam 2 with Unreal Engine 4. It will be cleaned from some external libraries which are not needed as we will visualize data using UE.
+
+## Install instructions for ORB Slam 2 on Windows
 
 1. Make a directory called build in orbslam-windows/Thirdparty/DBoW2
 - Run CMake GUI and set source code to orbslam-windows/Thirdparty/DBoW2 and where to build the binaries to orbslam-windows/Thirdparty/DBoW2/build
@@ -31,7 +35,12 @@ Easy build for ORB Slam 2 on Windows
 - Build ALL_BUILD. You'll have an error by project testlog that says "cannot open input file 'pthread.lib'" but that doesn't matter cause we don't use testlog. Everything else should build fine, i.e., you should have
 ========== Build: 18 succeeded, 1 failed, 0 up-to-date, 0 skipped ==========
 
-3. Make a directory called build in orbslam-windows
+4. Install OpenCV
+4.1 Install or copy OpenCV binaries into orbslam-windows/Thirdparty/opencv3.4/ (You should have paths like "ThirdParty/opencv3.4/build" and "ThirdParty/opencv3.4/source"
+or
+4.2 Edit CMakeLists.txt and Thirdparty/DBoW2/CMakeLists.txt so in line `find_package(OpenCV 3.0 REQUIRED PATHS "ThirdParty/opencv3.4/build/x64/vc15/lib")` them will point to you folder of opencv installation instead.
+
+5. Make a directory called build in orbslam-windows
 - Run CMake GUI and set source code to orbslam-windows and where to build the binaries to orbslam-windows/build
 - Press Configure and choose Visual Studio 14 2015 Win64 or Visual Studio 12 2013 Win64
 - Press Generate
