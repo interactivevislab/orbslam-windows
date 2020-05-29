@@ -53,7 +53,7 @@ int main(int argc, char **argv)
         cerr << "ERROR: Failed to load images" << endl;
         return 1;
     }
-
+    cout << "Init SLAM ..." << endl;
     // Create SLAM system. It initializes all system threads and gets ready to process frames.
     ORB_SLAM2::System SLAM(argv[1],argv[2],ORB_SLAM2::System::MONOCULAR,true);
 
@@ -126,17 +126,21 @@ void LoadImages(const string &strImagePath, const string &strPathTimes,
                 vector<string> &vstrImages, vector<double> &vTimeStamps)
 {
     ifstream fTimes;
-    fTimes.open(strPathTimes.c_str());
+    cout << "Load images from  " << strPathTimes.c_str() << "..." << endl;
+    fTimes.open(strPathTimes.c_str());	
     vTimeStamps.reserve(5000);
     vstrImages.reserve(5000);
+    cout << "Load start" << endl;
     while(!fTimes.eof())
     {
-        string s;
+        string s;        
         getline(fTimes,s);
+        cout << "Image string: " << s << endl;
         if(!s.empty())
-        {
+        {            
             stringstream ss;
             ss << s;
+            cout << "Load image: " << strImagePath + "/" + ss.str() + ".png" << endl;
             vstrImages.push_back(strImagePath + "/" + ss.str() + ".png");
             double t;
             ss >> t;
@@ -144,4 +148,5 @@ void LoadImages(const string &strImagePath, const string &strPathTimes,
 
         }
     }
+    cout << "Images loaded" << endl;
 }

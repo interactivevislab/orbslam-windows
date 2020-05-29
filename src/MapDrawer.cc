@@ -27,7 +27,7 @@
 namespace ORB_SLAM2
 {
 
-
+ /*
 MapDrawer::MapDrawer(Map* pMap, const string &strSettingPath):mpMap(pMap)
 {
     cv::FileStorage fSettings(strSettingPath, cv::FileStorage::READ);
@@ -260,5 +260,5 @@ void MapDrawer::GetCurrentOpenGLCameraMatrix(pangolin::OpenGlMatrix &M)
     else
         M.SetIdentity();
 }
-
+*/
 } //namespace ORB_SLAM
