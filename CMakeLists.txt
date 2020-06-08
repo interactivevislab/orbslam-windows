@@ -70,6 +70,8 @@ src/KeyFrameDatabase.cc
 src/Sim3Solver.cc
 src/Initializer.cc
 src/Viewer.cc
+src/UEFacadeInterface.cc
+
 )
 
 target_link_libraries(${PROJECT_NAME}
@@ -77,7 +79,7 @@ ${OpenCV_LIBS}
 ${EIGEN3_LIBS}
 #${Pangolin_LIBRARIES}
 ${PROJECT_SOURCE_DIR}/Thirdparty/DBoW2/lib/Release/DBoW2.lib
-${PROJECT_SOURCE_DIR}/Thirdparty/g2o/build/Release/g2o.lib
+${PROJECT_SOURCE_DIR}/Thirdparty/g2o/build/Debug/g2o.lib
 )
 
 # Build examples
@@ -111,5 +113,5 @@ target_link_libraries(mono_kitti ${PROJECT_NAME})
 
 add_executable(mono_euroc
 Examples/Monocular/mono_euroc.cc)
-target_link_libraries(mono_euroc ${PROJECT_NAME})
+target_link_libraries(mono_euroc ${PROJECT_NAME} ${PROJECT_SOURCE_DIR}/Build/Release/ORB_SLAM2.lib)
 

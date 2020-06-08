@@ -55,7 +55,7 @@ int main(int argc, char **argv)
     }
     cout << "Init SLAM ..." << endl;
     // Create SLAM system. It initializes all system threads and gets ready to process frames.
-    ORB_SLAM2::System SLAM(argv[1],argv[2],ORB_SLAM2::System::MONOCULAR,true);
+    ORB_SLAM2::System SLAM(argv[1],argv[2],ORB_SLAM2::System::MONOCULAR);
 
     // Vector for tracking time statistics
     vector<float> vTimesTrack;
@@ -79,7 +79,10 @@ int main(int argc, char **argv)
                  <<  vstrImageFilenames[ni] << endl;
             return 1;
         }
-
+    	
+        cv::namedWindow("Test", cv::WINDOW_AUTOSIZE);
+        cv::imshow("Test", im);
+        getchar();
         std::chrono::steady_clock::time_point t1 = std::chrono::steady_clock::now();
 
         // Pass the image to the SLAM system

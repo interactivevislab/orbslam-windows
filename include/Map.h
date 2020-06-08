@@ -48,6 +48,10 @@ public:
     void InformNewBigChange();
     int GetLastBigChangeIdx();
 
+    int GetNumMapPoints();
+
+    int GetNumRefPoints();
+	
     std::vector<KeyFrame*> GetAllKeyFrames();
     std::vector<MapPoint*> GetAllMapPoints();
     std::vector<MapPoint*> GetReferenceMapPoints();
